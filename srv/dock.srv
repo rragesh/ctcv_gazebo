@@ -1,4 +1,6 @@
 geometry_msgs/Pose2D pose
-
+float32 offset_distance
+float32 battery_thresh
+float32 robot_width
 ---
 bool reply

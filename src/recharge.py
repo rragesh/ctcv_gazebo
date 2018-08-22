@@ -26,18 +26,16 @@ goal = MoveBaseGoal()
 dock_msg = Int8()
 
 #Constant values
-bat_level     =  12.0
-bat_thresh    =  11.5
+battery_level =  12.0
+battery_thresh=  11.5
 stop_distance =  0.45
-offset        =  0.60
+offset_d      =  0.50
 x_origin      = -29.675 
 y_origin      = -7.4
+dock_msg      = -1
 robot_width   = 0.50
 win_off       = int(robot_width*20)
 count_max     = (2*win_off)**2 
-
-
-dock_msg = -1
 
 # function that handles the robot when the docking is missed(WORST CASE SCENARIO) 
 def docking_missed():
@@ -148,11 +146,33 @@ def laser_callback(scan_data):
             cmd_vel_msg.angular.z = 0.0
             cmd_vel_pub.publish(cmd_vel_msg)
 
-
 def dock_service_CB(request):
+    global offset
+    global bat_thresh
+    global width
     #The request is receives as a service call from terminal as -- rosservice call dock_service ...pose...
     x = request.pose.x
     y = request.pose.y
+
+    if request.offset_distance == 0.0:
+        offset = offset_d
+    else:
+        offset = request.offset_distance
+    rospy.loginfo(offset)
+
+
+    if request.battery_thresh == 0.0:
+        bat_thresh = battery_thresh
+    else:
+        bat_thresh = request.battery_thresh
+    rospy.loginfo(bat_thresh)
+
+    if request.robot_width == 0.0:
+        robot_width = 0.50
+    else:
+        robot_width = request.robot_width
+    rospy.loginfo(robot_width)
+
     theta = request.pose.theta
     quat = tf.transformations.quaternion_from_euler(0, 0,theta)
     x_off = x + offset*math.cos(theta)
