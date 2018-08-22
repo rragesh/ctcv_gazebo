@@ -175,7 +175,7 @@
       <sensor type="ray" name="rplidar_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
-      <update_rate>15.5</update_rate>
+      <update_rate>10</update_rate>
       <ray> 
         <scan>
           <horizontal>
