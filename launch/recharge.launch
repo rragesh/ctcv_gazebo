@@ -39,7 +39,7 @@
 
 
 	<!--RVIZ-->
-	<node pkg="rviz" type="rviz" name="rviz" args = "$(find stage_tutorial)/config_files/rviz_config.rviz" output ="screen"/>
+	<node pkg="rviz" type="rviz" name="rviz" args = "$(find ctcv_gazebo)/config_files/rviz_config.rviz" output ="screen"/>
 
 	<!-- Navigation Node-->	
 	<node pkg="move_base" type="move_base" name="move_base" output="screen">

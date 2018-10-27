@@ -1,9 +1,7 @@
-# ctcv_gazebo v0.1 (July 2018)
+# ctcv_gazebo v0.2 (July 2018)
 
 ----
 ## General Info
-
-*ctcv_gazebo* package for [ROS Kinetic Kame](http://wiki.ros.org/kinetic) and [Gazebo 7](http://gazebosim.org) on [Ubuntu 16.04 LTS](ftp://ftp.dei.uc.pt/pub/linux/ubuntu/releases/16.04.4).
 
 Author: David Portugal, Ingeniarius Ltd.
 
@@ -15,9 +13,6 @@ This is part of the extra tasks of [RobotCraft, class of 2018](http://robotcraft
 ## Assumption
 
 You should have ROS Kinetic and Gazebo 7 installed on Ubuntu 16.04.
-
-You should have basic knowledge of ROS and Gazebo before starting this task.
-
 Install the following dependencies:
 
 ```
@@ -30,18 +25,17 @@ Clone this packages into your workspace (assuming it is at */home/your_user/catk
 cd ~/catkin_ws/src
 git clone https://github.com/ingeniarius-ltd/ctcv_gazebo
 ```
+Install the following dependencies:
 
-and compile it:
-
+```
+sudo apt install ros-kinetic-move-base ros-kinetic-nav-core ros-kinetic-amcl ros-kinetic-map-server
+```
+Then compile it
 ```
 cd ~/catkin_ws
 catkin_make
 ```
 
-
-----
-## Development
-Robotcrafters, please add your code to this package (in the "src" folder) to program your robot's behavior.
 
 ----
 ## Usage
@@ -58,4 +52,17 @@ And in a separate terminal, start the localization and navigation software of th
 roslaunch ctcv_gazebo robot.launch
 ```
 
-Now start the ROS node(s) that you have coded to do specific robot behavior(s).
+To start up the Gazebo environment with the CTCV and 1 Robot for autonomous docking.
+```
+roslaunch ctcv_gazebo recharge.launch
+```
+To send the location of the docking station as service request
+```
+rosservice call /dock_service "pose:
+x: 0.0
+y: 0.0
+theta: 0.0
+offset_distance: 0.0
+battery_thresh: 0.0
+robot_width: 0.0"
+```

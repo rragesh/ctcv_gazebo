@@ -3,10 +3,10 @@ import rospy
 import math
 import actionlib
 import tf
+from ctcv_gazebo.srv import dock
 from std_msgs.msg import Int8
 from sensor_msgs.msg import LaserScan
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from ctcv_gazebo.srv import dock
 from geometry_msgs.msg import Pose2D
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import OccupancyGrid
