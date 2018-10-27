@@ -3,7 +3,9 @@
 ----
 ## General Info
 
-Author: David Portugal, Ingeniarius Ltd.
+Developer: Ragesh Ramachandran
+Mentor: David Portugal, Ingeniarius Ltd.
+
 
 This package contains the basic framework to run a robot in the Gazebo Simulator with ROS.
 
